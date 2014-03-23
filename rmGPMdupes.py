@@ -1,21 +1,11 @@
-#!/usr/bin/python
-
 #### Used to remove duplicate songs from google play music playlists ####
-#### Only works on *Nix systems ####
+#### This is the compatible version ####
 
-from gmusicapi import Mobileclient, Webclient
-from os import system
-
-def get_password(prompt):
-    #from http://scrollingtext.org/hiding-keyboard-input-screen
-    system("stty -echo")
-    password = raw_input(prompt)
-    system("stty echo")
-    return password
+from gmusicapi import Mobileclient
 
 def login():
     username = raw_input("Enter your Google Play username: ")
-    password = get_password("Enter your Google Play password: ")
+    password = raw_input("Enter your Google Play password: ")
     gpm = Mobileclient()
     if not gpm.login(username, password):
         print("\nNot a valid login")

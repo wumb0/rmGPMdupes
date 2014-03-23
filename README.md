@@ -12,19 +12,20 @@ If you have problems with the master branch on your nix system use the compatibl
 Usage
 ----------
 Install pip
+Download: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+Pull up an administrator shell
 ```
-wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-sudo python get-pip.py
+python get-pip.py
 ```
 
 Install gmusicapi
 ```
-sudo pip install gmusicapi
+pip install gmusicapi
 ```
 
 Run rmGPMdupes.py
 ```
-./rmGPMdupes.py
+python rmGPMdupes.py
 ```
 
 That's it!
