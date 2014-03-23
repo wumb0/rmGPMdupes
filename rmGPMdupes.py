@@ -3,7 +3,7 @@
 #### Used to remove duplicate songs from google play music playlists ####
 #### Only works on *Nix systems ####
 
-from gmusicapi import Mobileclient, Webclient
+from gmusicapi import Mobileclient
 from os import system
 
 def get_password(prompt):
