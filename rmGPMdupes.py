@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 #### Used to remove duplicate songs from google play music playlists ####
 #### Only works on *Nix systems ####
