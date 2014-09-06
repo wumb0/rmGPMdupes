@@ -29,7 +29,10 @@ def main():
     for playlist in gpm.get_all_user_playlist_contents():
         isdupes = False
         removed = []
-        print(str(playlist['name']))
+        try:
+            print(str(playlist['name']))
+        except:
+            print("Can't print the name... :(")
         for song in playlist['tracks']:
             if not song['id'] in removed:
                 numdupes = 0
