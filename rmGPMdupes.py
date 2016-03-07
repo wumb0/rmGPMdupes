@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 
-#### Used to remove duplicate songs from google play music playlists ####
-#### Only works on *Nix systems ####
+""" Used to remove duplicate songs from google play music playlists """
 
 from gmusicapi import Mobileclient
 from getpass import getpass
-from sys import argv
 
 def login():
     username = raw_input("Enter your Google Play username: ")
@@ -21,30 +19,21 @@ def login():
 def main():
     gpm = login()
     for playlist in gpm.get_all_user_playlist_contents():
-        isdupes = False
-        removed = []
+        dupes = []
         try:
             print(str(playlist['name']))
         except:
             print("Can't print the name... :(")
         for song in playlist['tracks']:
-            if not song['id'] in removed:
-                numdupes = 0
-                dupes = []
+            if not song['id'] in dupes:
                 for compsong in playlist['tracks']:
                     if (song['id'] != compsong['id'] and song['trackId'] == compsong['trackId']):
-                        isdupes = True
-                        numdupes += 1
                         dupes.append(compsong['id'])
-                        removed.append(compsong['id'])
-                for x in range(0, numdupes):
-                    print("Duplicate found! ID: " + str(dupes[x]))
-                    gpm.remove_entries_from_playlist(dupes[x]);
-        if not (isdupes):
+        if dupes:
+            print("Found {} duplicates! Removing... ".format(len(dupes)))
+            gpm.remove_entries_from_playlist(dupes)
+        else:
             print("None found")
-        print("\n")
 
 if __name__ == '__main__':
     main()
-
-
