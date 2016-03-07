@@ -4,20 +4,14 @@
 #### Only works on *Nix systems ####
 
 from gmusicapi import Mobileclient
-from os import system
-
-def get_password(prompt):
-    #from http://scrollingtext.org/hiding-keyboard-input-screen
-    system("stty -echo")
-    password = raw_input(prompt)
-    system("stty echo")
-    return password
+from getpass import getpass
+from sys import argv
 
 def login():
     username = raw_input("Enter your Google Play username: ")
-    password = get_password("Enter your Google Play password: ")
+    password = getpass("Enter your Google Play password: ")
     gpm = Mobileclient()
-    if not gpm.login(username, password):
+    if not gpm.login(username, password, "null"):
         print("\nNot a valid login")
         exit()
     else:
@@ -49,6 +43,8 @@ def main():
         if not (isdupes):
             print("None found")
         print("\n")
-main()
+
+if __name__ == '__main__':
+    main()
 
 
